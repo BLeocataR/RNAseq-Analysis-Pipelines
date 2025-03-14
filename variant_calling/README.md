@@ -169,7 +169,9 @@ Os resultados serão armazenados nos seguintes diretórios:
 ## 🔬 Etapas Detalhadas do Pipeline
 ### 🔹 1. Pré-processamento
 
-✔️ Filtragem de cromossomos alternativos: Remove contigs não padrão (ex: chrUn, alt scaffolds).
+✔️ Filtragem de cromossomos alternativos com samtools: Remove contigs não padrão (ex: chrUn, alt scaffolds).
+
+✔️ SPlitNCigarReads: fERRAMENTA DO gatk. Etapa essencial e exclusiva  para a pipeline de chamada de variantes em dados de RNAseq. 
 
 ✔️ Marcação de duplicatas: Utiliza o Picard para marcar reads duplicados.
 
