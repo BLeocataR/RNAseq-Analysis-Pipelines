@@ -84,20 +84,63 @@ Defina as variáveis de ambiente para o script:
 
 ```bash
 
-# Diretório base de trabalho
-export WD="/caminho/para/diretorio/base" 
+# 1️⃣ Diretórios principais
+##########################
+export WD="caminho/para/diretorio/base"  # Diretório base do projeto
+export PATH_TOOLS="caminho/para/ferramentas"  # Caminho para ferramentas e arquivos de referência
 
-# Caminho para as ferramentas utilizadas na análise
-export PATH_TOOLS="/caminho/para/ferramentas"  
 
-# Caminho para o arquivo FASTA do genoma de referência (GRCh38/hg38)
-export REF_FASTA="/caminho/para/Homo_sapiens_assembly38.fasta"  
+# 2️⃣ Listas e Arquivos de Controle
+##########################
+export BAM_LIST="${WD}/ALLsamples"  # Lista de arquivos BAM a serem processados
+export MANIFEST="${WD}/your_manifest.txt"  # Arquivo de manifesto do GDC
+export GDC_TOKEN="${WD}/gdc-user-token.********"  # Token de autenticação do GDC
 
-# Caminho para o painel de normal (PON) utilizado na filtragem de variantes somáticas
-export PON="/caminho/para/somatic-hg38_1000g_pon.hg38.vcf.gz"  
 
-# Caminho para a base de frequências alélicas do gnomAD para filtragem de variantes comuns
-export GNOMAD="/caminho/para/af-only-gnomad.hg38.vcf.gz"  
+# 3️⃣ Configuração de Recursos
+##########################
+export MEM=100  # Memória máxima alocada por tarefa (Cuidado: Ao definir, verifique o espaco disponivel  na maquina e considerare execução paralela)
+export JOBS=2  # Número de jobs em execução simultânea
+
+
+# 4️⃣ Diretórios de saída e logs
+##########################
+export PREPROCESSING_DIR="${WD}/preprocessing_result"  # Diretório de saída do pré-processamento
+export OUTPUT_DIR="${WD}/Result_Mutect2.GATK4.6"  # Diretório de saída do Mutect2
+export LOG_DIR="${WD}/Arquivos_log"  # Diretório para enviar os arquivos logs
+export PREPROCESS_LOG="${LOG_DIR}/preprocessing_$(date +%Y%m%d).log"  # Arquivo log para a etapa de pré-processamento
+export MUTECT_LOG="${LOG_DIR}/Pipeline_Mutect2_$(date +%Y%m%d).log"  # Arquivo log do Mutect2 e pos processamento 
+
+
+# 5️⃣ Arquivos de Referência Genômica
+##########################
+export REF_FASTA="/home/projects2/LIDO/molPathol/oncoseek/nextseq/hg38/Homo_sapiens_assembly38.fasta"  # Genoma de referência
+export TARGET="${WD}/exons_basic_hg38v47_chr.bed"  # Regiões-alvo para análise(limita a regiao de analise)
+export PON="${WD}/somatic-hg38_1000g_pon.hg38.vcf.gz"  # Painel de normais (PoN)
+export GNOMAD="${PATH_TOOLS}/references/af-only-gnomad.hg38.vcf.gz"  # Frequência de variantes na população gnomAD
+
+# Alternativa GNOMAD:
+# export GNOMAD="${WD}/references/af-only-gnomad.SABE1171.Abraom.hg38.vcf.gz"
+
+
+# 6️⃣ Ferramentas
+##########################
+export GATK="${PATH_TOOLS}/tools/gatk-4.6.0.0/gatk"  # Caminho do GATK 4.6
+export PICARD="${PATH_TOOLS}/tools/picard-3.2.0/picard.jar"  # Caminho do Picard
+export ANNOVAR="${PATH_TOOLS}/tools/annovar/table_annovar.pl"  # Caminho do ANNOVAR
+export ANNOVAR_DB="${PATH_TOOLS}/humandb/"  # Banco de dados do ANNOVAR
+
+
+# 7️⃣ Arquivos de Anotação e Cruzamento
+##########################
+export CROSS_REFERENCE="${PATH_TOOLS}/references/refGene_TARGET_COSMICv82CensusGene_F1.txt"  # Arquivo de referência cruzada
+
+
+# 8️⃣ Banco de Variantes Conhecidas
+##########################
+export INDEL_KNOWN="/home/projects2/LIDO/molPathol/oncoseek/nextseq/references/Mills_and_1000G_gold_standard.indels.hg38.vcf"  # Indels conhecidos
+export DBSNP="${PATH_TOOLS}/references/dbsnp_151.hg38.vcf.gz"  # Banco de variantes do tipo SNP do banco de dados dbSNP
+
 ```
 
 ## 🔹 Passo 2: Execução do Script
