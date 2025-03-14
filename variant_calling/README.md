@@ -177,7 +177,7 @@ Os resultados serão armazenados nos seguintes diretórios:
 
 ### 🔹 2. Chamada de Variantes
 
-✔️ Mutect2: Detecta variantes somáticas em RNA-seq.
+✔️ Mutect2: Ferramenta de chamada de variantes somaticas (SNVs e INDELs) do GATK
 
 ✔️ Filtragem: Aplica filtros como FilterMutectCalls e bcftools norm para normalização.
 
@@ -195,7 +195,7 @@ Os resultados serão armazenados nos seguintes diretórios:
 
 ## 📌 Melhorias Futuras
 
-🔹 Adicionar suporte para mais um chamador de variantes: Varscan.
+🔹 Adicionar suporte para mais um chamador de variantes: Ex Varscan.
 
 🔹 No caso do COMMPASS, utilizar amostras de DNA do próprio projeto para construcao do Panel of Normals (PoN).
 
