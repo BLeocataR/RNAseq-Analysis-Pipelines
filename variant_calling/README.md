@@ -80,14 +80,24 @@ O pipeline é dividido nas seguintes etapas principais:
 
 Certifique-se de que todas as dependências estão instaladas e os bancos de dados configurados corretamente.
 
-Defina as variáveis de ambiente no script script_variant_calling.sh:
+Defina as variáveis de ambiente para o script: 
 
 ```bash
-export wd="/caminho/para/diretorio/base"
-export path="/caminho/para/ferramentas"
-export REF_FASTA="/caminho/para/Homo_sapiens_assembly38.fasta"
-export PON="/caminho/para/somatic-hg38_1000g_pon.hg38.vcf.gz"
-export GNOMAD="/caminho/para/af-only-gnomad.hg38.vcf.gz"
+
+# Diretório base de trabalho
+export WD="/caminho/para/diretorio/base" 
+
+# Caminho para as ferramentas utilizadas na análise
+export PATH_TOOLS="/caminho/para/ferramentas"  
+
+# Caminho para o arquivo FASTA do genoma de referência (GRCh38/hg38)
+export REF_FASTA="/caminho/para/Homo_sapiens_assembly38.fasta"  
+
+# Caminho para o painel de normal (PON) utilizado na filtragem de variantes somáticas
+export PON="/caminho/para/somatic-hg38_1000g_pon.hg38.vcf.gz"  
+
+# Caminho para a base de frequências alélicas do gnomAD para filtragem de variantes comuns
+export GNOMAD="/caminho/para/af-only-gnomad.hg38.vcf.gz"  
 ```
 
 ## 🔹 Passo 2: Execução do Script
@@ -142,11 +152,11 @@ Os resultados serão armazenados nos seguintes diretórios:
 
 ## 📌 Melhorias Futuras
 
-🔹 Adicionar suporte para mais um chamador de variantes.
+🔹 Adicionar suporte para mais um chamador de variantes: Varscan.
 
-🔹 Utilizar amostras de DNA do próprio projeto para o Panel of Normals (PoN).
+🔹 No caso do COMMPASS, utilizar amostras de DNA do próprio projeto para construcao do Panel of Normals (PoN).
 
-🔹 Implementar realinhamento de resgate para melhorar a precisão.
+🔹 Implementar realinhamento de resgate com HISAT2 para melhorar a precisão.
 
 ## 📧 Contato
 
